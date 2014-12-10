@@ -1,0 +1,19 @@
+{
+  "name": "indexedb-wrapper",
+  "version": "0.0.0",
+  "authors": [
+    "Hongbo LU <gitawego@gmail.com>"
+  ],
+  "description": "simple indededb wrapper",
+  "keywords": [
+    "indexeddb"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
