@@ -89,23 +89,29 @@ describe('indexedDBWrapper', function () {
         });
     });
     it('should replace data', function (done) {
-        users.upsert('admin', {
+        users.upsert({
+            eq: "admin",
+            index: "username"
+        }, {
             username: "admin1",
             tel: "0642345234"
-        }, 'username').then(function (res) {
+        }).then(function (res) {
             done();
         }, function (err) {
-            console.error(err);
+            console.error(err,err.stack);
             expect(err).toBeNull();
             done();
         });
     });
     it('should merge data', function (done) {
-        users.upsert('admin1', {
+        users.upsert({
+            eq: "admin1",
+            index: "username"
+        }, {
             username: "admin",
             email: "contact@sesamtv.com",
             tel: "0642345234"
-        }, 'username', true).then(function (res) {
+        }, true).then(function (res) {
             done();
         }, function (err) {
             console.error(err);

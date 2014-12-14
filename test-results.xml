@@ -1,21 +1,23 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 40.0.2214 (Mac OS X 10.10.2)" package="" timestamp="2014-12-13T00:27:37" id="0" hostname="hlu-macbook.local">
+  <testsuite name="Chrome 40.0.2214 (Mac OS X 10.10.2)" package="" timestamp="2014-12-14T14:37:28" id="0" hostname="hlu-macbook.local">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.38 Safari/537.36"/>
     </properties>
   </testsuite>
-  <testsuite name="Chrome 40.0.2214 (Mac OS X 10.10.2)" package="" timestamp="2014-12-13T00:27:37" id="0" hostname="hlu-macbook.local" tests="5" errors="0" failures="0" time="0.153">
+  <testsuite name="Chrome 40.0.2214 (Mac OS X 10.10.2)" package="" timestamp="2014-12-14T14:37:28" id="0" hostname="hlu-macbook.local" tests="5" errors="0" failures="0" time="0.026">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.38 Safari/537.36"/>
     </properties>
-    <testcase name="should create database" time="0.062" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
+    <testcase name="should create database" time="0.013" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
     <testcase name="should get store helper" time="0.001" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
-    <testcase name="should import data" time="0.007" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
-    <testcase name="should replace data" time="0.081" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
-    <testcase name="should merge data" time="0.002" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
+    <testcase name="should import data" time="0.003" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
+    <testcase name="should replace data" time="0.006" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
+    <testcase name="should merge data" time="0.003" classname="Chrome 40.0.2214 (Mac OS X 10.10.2).indexedDBWrapper"/>
     <system-out><![CDATA[Chrome 40.0.2214 (Mac OS X 10.10.2) LOG: 'onupgradeneeded'
 ,Chrome 40.0.2214 (Mac OS X 10.10.2) LOG: Object{results: [1, 2], store: 'users'}
+,Chrome 40.0.2214 (Mac OS X 10.10.2) LOG: 'users', Object{openMode: 'readwrite', onCursor: function (cursor, store, objectStore) { ... }}
+,Chrome 40.0.2214 (Mac OS X 10.10.2) LOG: 'users', Object{openMode: 'readwrite', onCursor: function (cursor, store, objectStore) { ... }}
 
 ]]></system-out>
     <system-err/>
