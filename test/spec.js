@@ -113,4 +113,5 @@ describe('indexedDBWrapper', function () {
             done();
         });
     });
+
 });
