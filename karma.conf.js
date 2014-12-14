@@ -31,8 +31,7 @@ module.exports = function(config) {
             'karma-chrome-launcher',
             'karma-firefox-launcher',
             'karma-junit-reporter',
-            'karma-6to5-preprocessor',
-            'karma-commonjs'
+            'karma-6to5-preprocessor'
         ],
         // Start these browsers, currently available:
         // - Chrome
