@@ -13,9 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "6to5": "^1.14.17",
-    "6to5-loader": "^0.2.4",
-    "es6-promise": "^2.0.1",
-    "webpack": "^1.4.13"
+    "es6-promise": "^2.0.1"
   },
   "devDependencies": {
     "gulp": "^3.8.10",
