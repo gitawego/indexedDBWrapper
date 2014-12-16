@@ -6,7 +6,7 @@ var wrapper = require('gulp-wrapper');
 var uglify = require('gulp-uglify');
 var fs = require('fs');
 var wrapperConf = {
-    header: ";(function(){ "+fs.readFileSync('./bower_components/almond/almond.js'),
+    header: ";(function(){ "+fs.readFileSync('./node_modules/almond/almond.js'),
     footer: "\n this['IndexedDBWrapper']=require('IndexedDBWrapper')['default'];  }).bind(window)();"
 };
 

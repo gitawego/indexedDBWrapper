@@ -427,13 +427,7 @@ var requirejs, require, define;
         jQuery: true
     };
 }());
-(function (factory) {
-  if (typeof define === "function" && define.amd) {
-    define("BaseEvented", ["exports", "./CustomEvent", "./helper"], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(exports, require("./CustomEvent"), require("./helper"));
-  }
-})(function (exports, _CustomEvent, _helper) {
+define("BaseEvented", ["exports", "./CustomEvent", "./helper"], function (exports, _CustomEvent, _helper) {
   "use strict";
 
   var CustomEvent = _CustomEvent["default"];
@@ -590,13 +584,7 @@ var requirejs, require, define;
     return self;
   };
 });
-(function (factory) {
-  if (typeof define === "function" && define.amd) {
-    define("CustomEvent", ["exports"], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(exports);
-  }
-})(function (exports) {
+define("CustomEvent", ["exports"], function (exports) {
   "use strict";
   var slice = Array.prototype.slice, glb = typeof (window) !== "undefined" ? window : global;
 
@@ -830,13 +818,7 @@ var requirejs, require, define;
 
   exports["default"] = CustomEvent;
 });
-(function (factory) {
-  if (typeof define === "function" && define.amd) {
-    define("IDBStore", ["exports"], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(exports);
-  }
-})(function (exports) {
+define("IDBStore", ["exports"], function (exports) {
   "use strict";
 
   var IDBStore = (function () {
@@ -1070,13 +1052,7 @@ var requirejs, require, define;
 
   exports["default"] = IDBStore;
 });
-(function (factory) {
-  if (typeof define === "function" && define.amd) {
-    define("IndexedDBWrapper", ["exports", "./BaseEvented", "./helper", "./IDBStore"], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(exports, require("./BaseEvented"), require("./helper"), require("./IDBStore"));
-  }
-})(function (exports, _BaseEvented, _helper, _IDBStore) {
+define("IndexedDBWrapper", ["exports", "./BaseEvented", "./helper", "./IDBStore"], function (exports, _BaseEvented, _helper, _IDBStore) {
   "use strict";
 
   var _extends = function (child, parent) {
@@ -1332,13 +1308,7 @@ var requirejs, require, define;
 
   exports["default"] = IndexedDBWrapper;
 });
-(function (factory) {
-  if (typeof define === "function" && define.amd) {
-    define("helper", ["exports"], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(exports);
-  }
-})(function (exports) {
+define("helper", ["exports"], function (exports) {
   "use strict";
   var slice = Array.prototype.slice;
   var helper = exports.helper = {

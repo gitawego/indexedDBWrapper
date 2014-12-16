@@ -16,6 +16,7 @@
     "es6-promise": "^2.0.1"
   },
   "devDependencies": {
+    "almond": "^0.3.0",
     "gulp": "^3.8.10",
     "gulp-6to5": "^1.0.2",
     "gulp-concat": "^2.4.2",
