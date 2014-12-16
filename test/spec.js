@@ -119,5 +119,64 @@ describe('indexedDBWrapper', function () {
             done();
         });
     });
-
+    it('should upsert data with bulk method',function(done){
+       users.bulk({
+           "upsert":[{
+               "index":"username",
+               "merge":true,
+               "data":{
+                   "username":"admin",
+                   "mobile":"045234243"
+               }
+           }]
+       }).then(function(res){
+           console.log(res);
+           done();
+       },function(err){
+           console.error(err);
+           expect(err).toBeNull();
+           done();
+       });
+    });
+    it('should upsert data (replace) with bulk method',function(done){
+        users.bulk({
+            "upsert":[{
+                "index":"username_mail",
+                "key":["username","email"],
+                "data":{
+                    "username": "admin",
+                    "email": "contact@sesamtv.com",
+                    "bulkreplace":true
+                }
+            }]
+        }).then(function(res){
+            console.log(res);
+            done();
+        },function(err){
+            console.error(err);
+            expect(err).toBeNull();
+            done();
+        });
+    });
+    it('should unset "bulkreplace" with bulk method',function(done){
+        users.bulk({
+            "upsert":[{
+                "index":"username_mail",
+                "key":["username","email"],
+                "merge":true,
+                "data":{
+                    "username": "admin",
+                    "email": "contact@sesamtv.com",
+                    "bulkreplace":null
+                }
+            }]
+        }).then(function(res){
+            console.log(res);
+            done();
+        },function(err){
+            console.error(err);
+            expect(err).toBeNull();
+            done();
+        });
+    });
 });
