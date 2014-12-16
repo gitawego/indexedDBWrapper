@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 40.0.2214 (Mac OS X 10.10.2)" package="" timestamp="2014-12-16T22:47:38" id="0" hostname="hlu-macbook.local">
+  <testsuite name="Chrome 40.0.2214 (Mac OS X 10.10.2)" package="" timestamp="2014-12-16T23:33:38" id="0" hostname="hlu-macbook.local">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.38 Safari/537.36"/>
     </properties>
   </testsuite>
-  <testsuite name="Chrome 40.0.2214 (Mac OS X 10.10.2)" package="" timestamp="2014-12-16T22:47:39" id="0" hostname="hlu-macbook.local" tests="8" errors="1" failures="0" time="0">
+  <testsuite name="Chrome 40.0.2214 (Mac OS X 10.10.2)" package="" timestamp="2014-12-16T23:33:38" id="0" hostname="hlu-macbook.local" tests="8" errors="1" failures="0" time="0">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.38 Safari/537.36"/>
     </properties>
