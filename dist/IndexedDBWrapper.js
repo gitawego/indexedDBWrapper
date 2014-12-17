@@ -832,7 +832,9 @@ define("IDBStore", ["exports"], function (exports) {
       return new Promise(function (resolve, reject) {
         var req = store.clear();
         req.onsuccess = resolve;
-        req.onerror = reject;
+        req.onerror = function (evt) {
+          reject(evt.target.error);
+        };
       });
     };
 
@@ -841,15 +843,22 @@ define("IDBStore", ["exports"], function (exports) {
       return new Promise(function (resolve, reject) {
         var itemStore = _this.db.getStore(_this.storeName, "readwrite"), req = itemStore["delete"]();
         req.onsuccess = resolve;
-        req.onerror = reject;
+        req.onerror = function (evt) {
+          reject(evt.target.error);
+        };
       });
     };
 
     IDBStore.prototype.insert = function (item) {
       var itemStore = this.db.getStore(this.storeName, "readwrite"), req = itemStore.add(item);
       return new Promise(function (resolve, reject) {
-        req.onsuccess = resolve;
-        req.onerror = reject;
+        req.onsuccess = function (res) {
+          item[itemStore.keyPath] = this.result;
+          resolve(item);
+        };
+        req.onerror = function (evt) {
+          reject(evt.target.error);
+        };
       });
     };
 
@@ -876,7 +885,10 @@ define("IDBStore", ["exports"], function (exports) {
             var objectStore = _this2.db.getStore(_this2.storeName, "readwrite");
             tasks.push(new Promise(function (resolve, reject) {
               var req = objectStore.add(data);
-              req.onsuccess = resolve;
+              req.onsuccess = function () {
+                data[objectStore.keyPath] = this.result;
+                resolve(data);
+              };
               req.onerror = reject;
             }));
           }
@@ -895,8 +907,12 @@ define("IDBStore", ["exports"], function (exports) {
     IDBStore.prototype.removeByKey = function (keyPathId) {
       var itemStore = this.db.getStore(this.storeName, "readwrite"), req = itemStore["delete"](keyPathId);
       return new Promise(function (resolve, reject) {
-        req.onsuccess = resolve;
-        req.onerror = reject;
+        req.onsuccess = function () {
+          resolve(this.result);
+        };
+        req.onerror = function (evt) {
+          reject(evt.target.error);
+        };
       });
     };
 
@@ -928,16 +944,24 @@ define("IDBStore", ["exports"], function (exports) {
         } else {
           req = cursor[action]();
         }
-        req.onsuccess = resolve;
-        req.onerror = reject;
+        req.onsuccess = function () {
+          resolve(this.source.value);
+        };
+        req.onerror = function (evt) {
+          reject(evt.target.error);
+        };
       });
     };
 
     IDBStore.prototype.findByKey = function (keyValue) {
       var req = this.db.getStore(this.storeName, "readwrite").get(keyValue);
       return new Promise(function (resolve, reject) {
-        req.onsuccess = resolve;
-        req.onerror = reject;
+        req.onsuccess = function () {
+          resolve(this.result);
+        };
+        req.onerror = function (evt) {
+          reject(evt.target.error);
+        };
       });
     };
 
@@ -1027,10 +1051,7 @@ define("IDBStore", ["exports"], function (exports) {
 
         req.onerror = function (evt) {
           console.warn(evt.target.error.message, evt.target.error.name);
-          reject({
-            error: evt.target.error,
-            type: evt.target.error.name
-          });
+          reject(evt.target.error);
         };
       });
       deferred.abort = function () {
@@ -1069,7 +1090,7 @@ define("IndexedDBWrapper", ["exports", "./BaseEvented", "./helper", "./IDBStore"
 
   var BaseEvented = _BaseEvented["default"];
   var helper = _helper.helper;
-  var IDBStore = _IDBStore.IDBStore;
+  var IDBStore = _IDBStore["default"];
   var IndexedDBWrapper = (function (BaseEvented) {
     var IndexedDBWrapper = function IndexedDBWrapper(config) {
       this.config = {
@@ -1239,12 +1260,14 @@ define("IndexedDBWrapper", ["exports", "./BaseEvented", "./helper", "./IDBStore"
                   if (item.data.merge) {
                     item.data.data = self.mergeData(this.result, item.data.data);
                   } else {
-                    if (Array.isArray(item.data.key)) {
-                      item.data.key.forEach(function (k) {
-                        item.data.data[k] = this.result[k];
-                      }, this);
-                    } else {
-                      item.data.data[item.data.key] = this.result[item.data.key];
+                    if (item.data.key) {
+                      if (Array.isArray(item.data.key)) {
+                        item.data.key.forEach(function (k) {
+                          item.data.data[k] = this.result[k];
+                        }, this);
+                      } else {
+                        item.data.data[item.data.key] = this.result[item.data.key];
+                      }
                     }
                     item.data.data[itemStore.keyPath] = this.result[itemStore.keyPath];
                   }
