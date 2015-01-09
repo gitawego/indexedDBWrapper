@@ -1,5 +1,6 @@
-indexedDBWrapper
+indexedDBWrapper  
 ================
+[![Build Status](https://travis-ci.org/gitawego/indexedDBWrapper.svg?branch=master)](https://travis-ci.org/gitawego/indexedDBWrapper)
 
 a simple indexeddb wrapper
 
