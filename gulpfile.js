@@ -40,5 +40,33 @@ gulp.task('compressed', function () {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist'));
 });
+gulp.task('umd-full', function () {
+    return gulp.src('./lib/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(to5({
+            modules: "umd",
+            amdModuleIds:true
+        }))
+        .pipe(concat('IndexedDBWrapper.umd.js'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('dist'));
+});
 
-gulp.task('default', ['full', 'compressed']);
+gulp.task('umd-compressed', function () {
+    return gulp.src('./lib/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(to5({
+            modules: "umd",
+            amdModuleIds:true
+        }))
+        .pipe(concat('IndexedDBWrapper.umd.min.js'))
+        .pipe(uglify({
+            compress: {
+                drop_console: true // <-
+            }
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', ['full', 'compressed','umd-full','umd-compressed']);
