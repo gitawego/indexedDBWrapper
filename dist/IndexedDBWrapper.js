@@ -1321,8 +1321,12 @@ define("IndexedDBWrapper", ["exports", "./BaseEvented", "./helper", "./IDBStore"
     };
 
     IndexedDBWrapper.prototype.dropDB = function () {
-      this.db.close();
+      this.close();
       return this.indexedDB().deleteDatabase(this.config.dbName);
+    };
+
+    IndexedDBWrapper.prototype.close = function () {
+      return this.db.close();
     };
 
     return IndexedDBWrapper;
