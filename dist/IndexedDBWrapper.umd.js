@@ -810,7 +810,7 @@
           }
         }), res = [];
 
-        if (!Array.isArray(items)) {
+        if (Array.isArray(items)) {
           parsedItems = items;
         } else {
           Object.keys(items).forEach(function (method) {
