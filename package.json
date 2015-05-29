@@ -1,7 +1,7 @@
 {
   "name": "indexedb-wrapper",
   "version": "1.0.0",
-  "description": "indexedDBWrapper ================",
+  "description": "indexedDBWrapper",
   "main": "./lib/IndexedDBWrapper.js",
   "directories": {
     "test": "test"
