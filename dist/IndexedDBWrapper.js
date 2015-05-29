@@ -2519,5 +2519,5 @@ define('helper', ['exports'], function (exports) {
 });
 
 //
- this['IndexedDBWrapper']=require('IndexedDBWrapper')['default'];  }).bind(window)();
+ this['IndexedDBWrapper']=require('IndexedDBWrapper');  }).bind(window)();
 //# sourceMappingURL=IndexedDBWrapper.js.map
