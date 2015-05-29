@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
-var to5 = require('gulp-6to5');
+var to5 = require('gulp-babel');
 var concat = require('gulp-concat');
 var wrapper = require('gulp-wrapper');
 var uglify = require('gulp-uglify');
@@ -15,7 +15,7 @@ gulp.task('full', function () {
         .pipe(sourcemaps.init())
         .pipe(to5({
             modules: "amd",
-            amdModuleIds:true
+            moduleIds:true
         }))
         .pipe(concat('IndexedDBWrapper.js'))
         .pipe(wrapper(wrapperConf))
@@ -28,7 +28,7 @@ gulp.task('compressed', function () {
         .pipe(sourcemaps.init())
         .pipe(to5({
             modules: "amd",
-            amdModuleIds:true
+            moduleIds:true
         }))
         .pipe(concat('IndexedDBWrapper.min.js'))
         .pipe(wrapper(wrapperConf))
@@ -45,7 +45,7 @@ gulp.task('umd-full', function () {
         .pipe(sourcemaps.init())
         .pipe(to5({
             modules: "umd",
-            amdModuleIds:true
+            moduleIds:true
         }))
         .pipe(concat('IndexedDBWrapper.umd.js'))
         .pipe(sourcemaps.write('.'))
@@ -57,7 +57,7 @@ gulp.task('umd-compressed', function () {
         .pipe(sourcemaps.init())
         .pipe(to5({
             modules: "umd",
-            amdModuleIds:true
+            moduleIds:true
         }))
         .pipe(concat('IndexedDBWrapper.umd.min.js'))
         .pipe(uglify({
