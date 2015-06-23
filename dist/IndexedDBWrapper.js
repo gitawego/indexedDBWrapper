@@ -1561,6 +1561,7 @@ define('IndexedDBWrapper', ['exports', 'module', './BaseEvented', './helper', '.
                         itemStore = _this2.getStore(storeName, 'readwrite', {
                         onerror: function onerror(evt) {
                             var error = evt.target.error;
+                            error.storeName = storeName;
                             error.item = item;
                             reject(error);
                         }
